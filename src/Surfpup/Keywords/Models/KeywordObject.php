@@ -10,11 +10,37 @@ class KeywordObject extends Model {
 	/**
 	 * Relation to KeywordMap
 	 * 
-	 * @return array of keywords
+	 * @return array of KeywordMap objects
 	 */
 	public function keywords()
 	{
 		return $this->morphMany('KeywordMap', 'mappable');
+	}
+	
+	/**
+	 * Retrieves assigned keywords
+	 * 
+	 * @return array of keywords
+	 */
+	public function getKeywords()
+	{
+		return array_map(function($keywordmap)
+			{
+				return (object) $keywordmap;
+			}, $this->keywords()->join('keywords', 'keywords.id','=','keywords_map.keyword_id')->get()->toArray());
+	}
+	
+	/**
+	 * Retrieves assigned keyword names
+	 * 
+	 * @return array of keywords' names
+	 */
+	public function getKeywordNames()
+	{
+		return array_map(function($keywordmap)
+			{
+				return $keywordmap['name'];
+			}, $this->keywords()->join('keywords', 'keywords.id','=','keywords_map.keyword_id')->get()->toArray());
 	}
 	
 	/**

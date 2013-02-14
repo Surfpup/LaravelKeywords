@@ -8,3 +8,5 @@ For any model that you wish to assign keywords to, simply extend the KeywordObje
 KeywordObject methods
 * addKeyword($word) - Assign a keyword
 * addKeywords($words) - Assign multiple keywords (with an array or comma-separated string)
+* keywords - The relationship method which accesses KeywordMap objects
+* getKeywords - Returns an array of keyword names

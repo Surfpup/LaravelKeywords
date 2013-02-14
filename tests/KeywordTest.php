@@ -65,8 +65,9 @@ class KeywordTest extends TestCase {
 		$third->save();
 		$third->addKeywords(array('Test', 'Testing', 'Testify'));
 		$third->addKeywords('More Test, Super Test, Woot!');
-		*/
 		
+		print_r($third->getKeywords());
+		*/
 		
 		//Drop test tables
 		Schema::drop('keyword_objects');
