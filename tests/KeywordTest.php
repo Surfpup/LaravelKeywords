@@ -60,6 +60,14 @@ class KeywordTest extends TestCase {
 		$keywordMap2->keyword->delete();
 		$keywordMap2->delete();
 		
+		/*
+		$third = new KeywordObject(array('name'=>'MoreTest'));
+		$third->save();
+		$third->addKeywords(array('Test', 'Testing', 'Testify'));
+		$third->addKeywords('More Test, Super Test, Woot!');
+		*/
+		
+		
 		//Drop test tables
 		Schema::drop('keyword_objects');
 		Schema::drop('more_keyword_examples');
