@@ -44,16 +44,19 @@ class KeywordObject extends Model {
 	/**
 	 * Add multiple keywords
 	 * 
-	 * @param array $words
+	 * @param array or string $words
 	 * 
 	 * @return KeywordMap array
 	 */
 	public function addKeywords($words)
 	{
+		if(is_string($words)) //It could be a comma-separated string
+			$words = explode(',',$words);
+		
 		$mappings = array();
 		foreach($words as $word)
 		{
-			$mappings[] = $this->addKeyword($word);
+			$mappings[] = $this->addKeyword(trim($word));
 		}
 		
 		return $mappings;
