@@ -34,15 +34,11 @@ class KeywordTest extends TestCase {
 		$testObj->name = 'TestObj';
 		$testObj->save();
 		
-		//Assign the keyword to this object
-		//Not sure why it doesn't set mappable_type automatically..
-		//$keywordMap = new KeywordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'KeywordObject'));
-		//$testObj->keywords()->save($keywordMap);
 		$keywordMap = $testObj->addKeyword('TestWord');
 		
 		$id = $testObj->id;
 		
-		//Test retrieval;
+		//Test retrieval
 		
 		$obj = KeywordObject::find($id);
 		$this->assertTrue($obj->keywords()->first()->keyword->name == "TestWord");
@@ -55,13 +51,13 @@ class KeywordTest extends TestCase {
 		$secObj->save();
 		
 		$keywordMap2 = $secObj->addKeyword('TestWord2');
-		//$secObj->keywords()->save(new KeyWordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'MoreKeywordExample')));
 		
 		$this->assertTrue($secObj->keywords()->first()->keyword->name == "TestWord2");
 		
-		//Delete keyword
+		//Delete keywords and mappings
 		$keyword->delete();
 		$keywordMap->delete();
+		$keywordMap2->keyword->delete();
 		$keywordMap2->delete();
 		
 		//Drop test tables

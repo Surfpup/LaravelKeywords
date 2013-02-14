@@ -33,7 +33,8 @@ class KeywordObject extends Model {
 		} elseif ($keywordMap = KeywordMap::where('keyword_id', $keyword->id)->first())
 			return $keywordMap; //The mapping already exists, we don't want duplicates
 		
-		//Create the mapping
+		//Assign the keyword to this object
+		//Not sure why it doesn't set mappable_type automatically..
 		$keywordMap = new KeywordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>get_called_class()));
 		
 		$this->keywords()->save($keywordMap);
