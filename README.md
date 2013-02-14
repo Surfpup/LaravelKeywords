@@ -9,4 +9,5 @@ KeywordObject methods
 * addKeyword($word) - Assign a keyword
 * addKeywords($words) - Assign multiple keywords (with an array or comma-separated string)
 * keywords - The relationship method which accesses KeywordMap objects
-* getKeywords - Returns an array of keyword names
+* getKeywordNames() - Returns an array of keyword names
+* getKeywords() - Returns an array of KeywordMap objects joined with the keyword name
