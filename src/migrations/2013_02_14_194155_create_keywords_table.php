@@ -26,19 +26,6 @@ class CreateKeywordsTable extends Migration {
 			$table->integer('mappable_id');
 			$table->string('mappable_type');
 		});
-		
-		Schema::create('keyword_examples', function($table)
-		{
-			$table->increments('id');
-			$table->string('name', 255);
-		});
-		
-		Schema::create('more_keyword_examples', function($table)
-		{
-			$table->increments('id');
-			$table->string('name', 255);
-			$table->integer('num');
-		});
 	}
 
 	/**
@@ -50,8 +37,6 @@ class CreateKeywordsTable extends Migration {
 	{
 		Schema::drop('keywords');
 		Schema::drop('keywords_map');
-		Schema::drop('keyword_examples');
-		Schema::drop('more_keyword_examples');
 	}
 
 }
