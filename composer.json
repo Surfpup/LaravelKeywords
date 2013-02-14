@@ -1,0 +1,22 @@
+{
+    "name": "surfpup/keywords",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ian Hall",
+            "email": "Surfpup00@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Surfpup\\Keywords": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
