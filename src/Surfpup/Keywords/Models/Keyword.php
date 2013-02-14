@@ -16,4 +16,13 @@ class Keyword extends Model {
 	{
 		return $this->hasMany('keywords_map');
 	}
+	
+	public static function add($word)
+	{
+		if(!$keyword = static::where('name', $word)->first()) {
+			$keyword = new Keyword(array('name'=>$word));
+			$keyword->save();
+		}
+		return $keyword;
+	}
 }

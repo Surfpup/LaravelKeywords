@@ -5,6 +5,14 @@ class KeywordTest extends TestCase {
     public function testRelations()
     {
     	//First create tables to test with
+    	
+    	try { //Just in case something failed previously
+    		Schema::drop('keyword_objects');
+			Schema::drop('more_keyword_examples');
+    	} catch(Exception $e) {
+			
+		}
+		
     	Schema::create('keyword_objects', function($table)
 		{
 			$table->increments('id');
@@ -19,8 +27,7 @@ class KeywordTest extends TestCase {
 		});
 		
     	//We add a new keyword...
-		$keyword = new Keyword(array('name'=>'TestWord'));
-		$keyword->save();
+		$keyword = Keyword::add('TestWord');
 		
 		//Add a new object...
     	$testObj = new KeywordObject;
@@ -29,8 +36,9 @@ class KeywordTest extends TestCase {
 		
 		//Assign the keyword to this object
 		//Not sure why it doesn't set mappable_type automatically..
-		$keywordMap = new KeywordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'KeywordObject'));
-		$testObj->keywords()->save($keywordMap);
+		//$keywordMap = new KeywordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'KeywordObject'));
+		//$testObj->keywords()->save($keywordMap);
+		$keywordMap = $testObj->addKeyword('TestWord');
 		
 		$id = $testObj->id;
 		
@@ -46,13 +54,15 @@ class KeywordTest extends TestCase {
 		$secObj->num = 24;
 		$secObj->save();
 		
-		$secObj->keywords()->save(new KeyWordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'MoreKeywordExample')));
+		$keywordMap2 = $secObj->addKeyword('TestWord2');
+		//$secObj->keywords()->save(new KeyWordMap(array('keyword_id'=>$keyword->id, 'mappable_type'=>'MoreKeywordExample')));
 		
-		$this->assertTrue($secObj->keywords()->first()->keyword->name == "TestWord");
+		$this->assertTrue($secObj->keywords()->first()->keyword->name == "TestWord2");
 		
 		//Delete keyword
 		$keyword->delete();
 		$keywordMap->delete();
+		$keywordMap2->delete();
 		
 		//Drop test tables
 		Schema::drop('keyword_objects');

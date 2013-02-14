@@ -16,6 +16,7 @@ class CreateKeywordsTable extends Migration {
 		{
 		    $table->increments('id');
 			$table->string('name', 255);
+			$table->unique('name');
 		});
 		
 		//Mapping the words with the table entries
@@ -25,6 +26,7 @@ class CreateKeywordsTable extends Migration {
 			$table->integer('keyword_id');
 			$table->integer('mappable_id');
 			$table->string('mappable_type');
+			$table->unique(array('keyword_id', 'mappable_id', 'mappable_type'));
 		});
 	}
 
