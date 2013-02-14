@@ -6,7 +6,9 @@ Create meta tags/keywords and relate them to other tables via a polymorphic rela
 Installation (WIP)
 
 For the moment, not published as a composer package, so just place (in your project folder) at: workbench/surfpup/keywords
+
 And remember to add to the project's composer.json, in "autoload" -> "classmap": "workbench/surfpup/keywords"
+
 Then to run tests, run:
 	phpunit workbench/surfpup/keywords/
 
