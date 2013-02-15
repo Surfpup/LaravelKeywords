@@ -98,12 +98,9 @@ class KeywordObject extends Model {
 	 */
 	public function removeKeyword($word)
 	{
-		if(!$keyword = Keyword::where('name', $word)->first()) {
-			return false;
-		}
-		
-		return KeywordMap::where('keyword_id', $keyword->id)
-								->where('mappable_id', $this->id)
-								->delete();
+		return KeywordMap::where('keywords.name', $word)
+						->where('keywords_map.mappable_id', $this->id)
+						->join('keywords_map', 'keywords_map.keyword_id','=','keywords.id')
+						->delete();
 	}
 }
