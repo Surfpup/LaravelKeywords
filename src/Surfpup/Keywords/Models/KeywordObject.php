@@ -88,4 +88,22 @@ class KeywordObject extends Model {
 		
 		return $mappings;
 	}
+	
+	/**
+	 * Remove a keyword from this object
+	 * 
+	 * @param string $word
+	 * 
+	 * @return object
+	 */
+	public function removeKeyword($word)
+	{
+		if(!$keyword = Keyword::where('name', $word)->first()) {
+			return false;
+		}
+		
+		return KeywordMap::where('keyword_id', $keyword->id)
+								->where('mappable_id', $this->id)
+								->delete();
+	}
 }
