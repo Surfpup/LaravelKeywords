@@ -2,6 +2,11 @@
 
 use Illuminate\Support\ServiceProvider;
 
+use Models\Keyword;
+use Models\KeywordObject;
+use Models\KeywordMap;
+use Models\MoreKeywordExample;
+
 class KeywordsServiceProvider extends ServiceProvider {
 
 	/**
@@ -18,7 +23,11 @@ class KeywordsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('surfpup/keywords', 'surfpup/keywords');
+		$this->package('surfpup/keywords');
+		//require __DIR__.'/Models/Keyword.php';
+		//require __DIR__.'/Models/KeywordObject.php';
+		//require __DIR__.'/Models/KeywordMap.php';
+		//require __DIR__.'/Models/MoreKeywordExample.php';
 	}
 
 	/**

@@ -6,4 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateKeywordsTable' => $baseDir . '/src/migrations/2013_02_14_194155_create_keywords_table.php',
 );

@@ -1,25 +1,29 @@
-<?php
+<?php namespace Surfpup\Keywords;
 
-class KeywordTest extends TestCase {
+use Surfpup\Keywords\Models\Keyword;
+use Surfpup\Keywords\Models\KeywordObject;
+use Surfpup\Keywords\Models\MoreKeywordExample;
+
+class KeywordTest extends \TestCase  {
 
     public function testRelations()
     {
     	//First create tables to test with
     	
     	try { //Just in case something failed previously
-    		Schema::drop('keyword_objects');
-			Schema::drop('more_keyword_examples');
+    		\Schema::drop('keyword_objects');
+			\Schema::drop('more_keyword_examples');
     	} catch(Exception $e) {
 			
 		}
 		
-    	Schema::create('keyword_objects', function($table)
+    	\Schema::create('keyword_objects', function($table)
 		{
 			$table->increments('id');
 			$table->string('name', 255);
 		});
 		
-		Schema::create('more_keyword_examples', function($table)
+		\Schema::create('more_keyword_examples', function($table)
 		{
 			$table->increments('id');
 			$table->string('name', 255);
@@ -70,8 +74,8 @@ class KeywordTest extends TestCase {
 		*/
 		
 		//Drop test tables
-		Schema::drop('keyword_objects');
-		Schema::drop('more_keyword_examples');
+		\Schema::drop('keyword_objects');
+		\Schema::drop('more_keyword_examples');
     }
 
 }
