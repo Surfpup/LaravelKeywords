@@ -1,4 +1,4 @@
-<?php
+<?php namespace Surfpup\Keywords\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Surfpup\Keywords\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +14,7 @@ class KeywordObject extends Model {
 	 */
 	public function keywords()
 	{
-		return $this->morphMany('KeywordMap', 'mappable');
+		return $this->morphMany('Surfpup\Keywords\Models\KeywordMap', 'mappable');
 	}
 	
 	/**
