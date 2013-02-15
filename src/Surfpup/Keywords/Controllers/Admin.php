@@ -3,6 +3,8 @@
 use Illuminate\Routing\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
+use Surfpup\Keywords\Models\Keyword;
+
 class Admin extends Controller {
 
 	/*
@@ -17,7 +19,9 @@ class Admin extends Controller {
 
 	public function listKeywords()
 	{
-		return View::make('keywords::keywords');
+		$keywords = Keyword::all();
+		return View::make('keywords::keywords')
+				->with('keywords', $keywords);
 	}
 
 }
