@@ -7,7 +7,6 @@ Installation (WIP)
 
 For the moment, not published as a composer package, so 
 * place (in your project folder) at: workbench/surfpup/keywords
-* remember to add to the project's composer.json, in "autoload" -> "classmap": "workbench/surfpup/keywords"
 * Add 'Surfpup\Keywords\KeywordsServiceProvider' to app/config/app.php
 * Run composer update
 
